@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        form{font-family:'Times New Roman', Times, serif;
+        font-weight: bold;
+        }
+        h2{
+            font-family: 'Times New Roman', Times, serif;
+            font-style: oblique;
+            color: rgb(97, 151, 249);
+        }
+    </style>
+<script> 
+function validateform()
+{
+var name=document.form1.email;  
+var password=document.form1.password.value;
+var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+if(!name.value.match(mailformat))
+{
+alert("Invalid email address.");
+document.form1.text1.focus();
+return false;
+}
+else if(password.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  }  
+}    
+</script> 
+</head>
+<body>
+<div>
+<h2>JavaScript Login Form Validation</h2>
+<fieldset style="width:300px">
+<form name="form1" onsubmit="return validateform()"> 
+Email: <input type='text' name='email'/></br></br>
+Password: <input type="password" name="password"><br/> 
+<input type="submit" value="Login"/>
+</fieldset>
+</form>
+</div>
+</body>
+</html>

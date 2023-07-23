@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+    <body>
+        <h1> JavaScript Events</h1>
+<p id="demo" onclick="myFunction()">Click me to change my color.</p>
+<p onmouseover="mouseoverevent()">Keep cursor over me </p>
+<p Enter something here></p>
+<input type="text" id="input1" onfocus="focusevent()"/>
+<p Enter something here></p>
+<input type="text" id="input2" onkeydown="keydownevent()"/>
+<script>
+function myFunction() {
+  document.getElementById("demo").style.color = "red";
+}
+function mouseoverevent()
+{
+    alert("This is abc");
+}
+function focusevent(){
+document.getElementById("input1").style.background="aqua";
+}
+function keydownevent(){
+    document.getElementById("input2");
+    alert("Pressed a key");
+}
+document.write("The page is loaded successfully");
+
+</script>
+    </body>
+    </html>

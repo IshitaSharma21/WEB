@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-style:normal
+    }
+    .main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white
+}
+
+.container {
+    width: 35rem;
+    display: flex;
+    background-color:rgb(80, 120, 190);
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.col {
+    text-align: justify;
+    padding: 15px;
+    width: 95%;
+}
+
+#submit {
+    width: 100%;
+    background-color:rgb(72, 37, 211);
+    color: white;
+    font-size: 25px;
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.box {
+    box-shadow: 0px -1px 1px grey;
+    width: 100%;
+}
+    </style>
+</head>
+
+<body>
+    <section class="main">
+
+        <div class="container">
+            <div class="col">
+                <h3 id="questionBox">
+                    1) Question
+                </h3>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="question1" value="a" required>
+                <label for="first">Test 1</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="question2" value="b" required>
+                <label for="second">Test2 </label>
+            </div>
+            <button id="submit">Submit</button>
+        </div>
+
+    </section>
+    <script >
+        const Data = [{
+        question: "Python is what type of language?",
+        a: "Interpreted",
+        b: "Compiled",
+        correct: "a",
+    },
+    {
+        question: "HTML stands for?",
+        a: "Hypertext Markup Language",
+        b: "High text Making Language ",
+        correct: "a",
+    },
+];
+let index = 0;
+let correct = 0,
+    incorrect = 0,
+    total = Data.length;
+let questionBox = document.getElementById("questionBox");
+let allInputs = document.querySelectorAll("input[type='radio']")
+const loadQuestion = () => {
+    if (total === index) {
+        return quizEnd()
+    }
+    reset()
+    const data = Data[index]
+    questionBox.innerHTML = `${index + 1}) ${data.question}`
+    allInputs[0].nextElementSibling.innerText = data.a
+    allInputs[1].nextElementSibling.innerText = data.b
+}
+document.querySelector("#submit").addEventListener(
+    "click",
+    function() {
+        const data = Data[index]
+        const ans = getAnswer()
+        if (ans === data.correct) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+        index++;
+        loadQuestion()
+    }
+)
+const getAnswer = () => {
+    let ans;
+    allInputs.forEach(
+        (inputl) => {
+            if (inputl.checked) {
+                ans = inputl.value;
+            }
+        }
+    )
+    return ans;
+}
+const reset = () => {
+    allInputs.forEach(
+        (inputl) => {
+            inputl.checked = false;
+        }
+    )
+}
+const quizEnd = () => {
+    document.getElementsByClassName("container")[0].innerHTML = `
+        <div class="col">
+            <h3 class="w-100"> Your score is ${correct} / ${total} </h3>
+        </div>
+    `
+}
+loadQuestion(index);
+    </script>
+</body>
+</html>

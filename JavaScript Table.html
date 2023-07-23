@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Displaying Content From the Table Using JavaScript</title>
+        <style>
+            th,td,p,input{
+font: 14px;
+font-style: normal;
+color: black;
+            }
+            table,th,td{
+                border: solid 1.5px;
+                border-collapse:collapse ;
+                padding:2px 3px ;
+                text-align: center;
+            }
+            th{
+                font-weight:bold;
+            }
+            td{
+font-family: 'Times New Roman', Times, serif;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="Student">
+            <tr>
+                <th>ID</th>
+                    <th>Student Name</th>
+                        <th>Age</th>
+            </tr>
+            <tr>
+                <td>01</td>
+                    <td>Ishita</td>
+                        <td>21</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                    <td>Daksh</td>
+                        <td>22</td>
+            </tr>
+          <tr>
+                <td>03</td>
+                    <td>Raghav</td>
+                        <td>22</td>
+            </tr>
+          <tr>
+                <td>04</td>
+                    <td>Roy</td>
+                        <td>22</td>
+            </tr>
+        </table>
+        <p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()"/></p>
+        <p id="info"></p>
+        <script>
+             function showTableData() {
+        document.getElementById('info').innerHTML = "";
+        var myTab = document.getElementById('Student');
+for (i = 1; i < myTab.rows.length; i++)
+{
+            var objCells = myTab.rows.item(i).cells;
+
+            for (var j = 0; j < objCells.length; j++) {
+                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML ;
+            }
+        
+        info.innerHTML = info.innerHTML + '<br />';  
+        }
+    }
+        </script>
+    </body>
+</html>

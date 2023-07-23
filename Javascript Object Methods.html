@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            //Object.create method
+            function fun(){
+                this.name ='abc';
+            }
+            function fun1(){
+                fun.call(this)
+            }
+            fun1.prototype = Object.create(fun.prototype);
+            const app = new fun1();
+            console.log(app.name);
+        </script>
+    </body>
+</html>

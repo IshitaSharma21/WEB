@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <p id="abc"></p>
+  <script>
+    var currentDate = new Date();
+    var month = currentDate.getMonth() + 1; 
+    var year = currentDate.getFullYear();
+    var day = currentDate.getDate();
+    var resultString = "Month: " + month + "<br>Year: " + year + "<br>Day: " + day;
+    document.getElementById("abc").innerHTML = resultString;
+  </script>
+</body>
+</html>
